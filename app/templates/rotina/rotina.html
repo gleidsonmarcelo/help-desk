@@ -1,0 +1,1148 @@
+{% extends "base.html" %}
+{% block home %}
+<div class="container">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header text-center text-white bg-info">
+                <h5>Rotina</h5>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-info btn-block" href="./">Menu Principal</a>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#modal1">Checklist
+                    Diário</button>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal"
+                    data-target="#modal2">Acompanhamento do Jornal BDPE</button>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal"
+                    data-target="#modal3">Acompanhamento do Jornal NE1</button>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal"
+                    data-target="#modal4">Acompanhamento do Jornal GE</button>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal"
+                    data-target="#modal5">Acompanhamento do Jornal NE2</button>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#modal6">Backup do
+                    iNews</button>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal"
+                    data-target="#modal7">Acompanhamento do Scout</button>
+                <button type="button" class="btn btn-dark btn-block" data-toggle="modal"
+                    data-target="#modal8">Ambientação</button>
+            </div>
+            <!-- Modal Checklist Diário -->
+            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Checklist Diário</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R1" class="form-control" value="Paulo Henrique Meira"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR1();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L1" class="form-control"
+                                                value="Prédio Conteúdo, 1º Andar, Help Desk" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL1();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T1" class="form-control"
+                                                value="PósLog>Sistemas Globo>Demais Sistemas>Dúvidas de Utilização>Checklist Diário"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT1();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT1">
+                                            <input type="text" id="D1" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H1" class="form-control" value="05:00">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Ocorrência</label>
+                                        <select id="O1" class="form-control">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div id="DO1" class="col-md-12 mb-3 text-left">
+                                        <label>Detalhes da Ocorrência</label>
+                                        <div class="input-group">
+                                            <input type="text" id="DOT1" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div id="DE1" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET1" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE1();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE1();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Sistema/Aplicação</label>
+                                        <div class="input-group">
+                                            <input id="S1" type="text" value="INEWS_PRD_TVG" class="form-control"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyS1();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG1" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG1();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N1" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN1();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN1">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT1" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN1();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN1();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Checklist Diário -->
+            <!-- Modal Acompanhamento do Jornal BDPE -->
+            <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Acompanhamento do Jornal BDPE</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R2" class="form-control" value="Paulo Henrique Meira"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR2();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L2" class="form-control"
+                                                value="Prédio Conteúdo, Térreo, Controle 1" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL2();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T2" class="form-control"
+                                                value="PósLog>Sistemas Globo>Demais Sistemas>Dúvidas de Utilização>Acompanhamento Jornais"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT2();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT2">
+                                            <input type="text" id="D2" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H2" class="form-control" value="06:00">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Ocorrência</label>
+                                        <select id="O2" class="form-control">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div id="DO2" class="col-md-12 mb-3 text-left">
+                                        <label>Detalhes da Ocorrência</label>
+                                        <div class="input-group">
+                                            <input type="text" id="DOT2" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div id="DE2" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET2" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE2();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE2();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Sistema/Aplicação</label>
+                                        <div class="input-group">
+                                            <input id="S2" type="text" value="INEWS_PRD_TVG" class="form-control"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyS2();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG2" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG2();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N2" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN2();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN2">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT2" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN2();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN2();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Acompanhamento do Jornal BDPE -->
+            <!-- Modal Acompanhamento do Jornal NE1 -->
+            <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Acompanhamento do Jornal NE1</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R3" class="form-control" value="Paulo Henrique Meira"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR3();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L3" class="form-control"
+                                                value="Prédio Conteúdo, Térreo, Controle 1" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL3();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T3" class="form-control"
+                                                value="PósLog>Sistemas Globo>Demais Sistemas>Dúvidas de Utilização>Acompanhamento Jornais"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT3();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT3">
+                                            <input type="text" id="D3" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H3" class="form-control" value="12:00">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Ocorrência</label>
+                                        <select id="O3" class="form-control">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div id="DO3" class="col-md-12 mb-3 text-left">
+                                        <label>Detalhes da Ocorrência</label>
+                                        <div class="input-group">
+                                            <input type="text" id="DOT3" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div id="DE3" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET3" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE3();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE3();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Sistema/Aplicação</label>
+                                        <div class="input-group">
+                                            <input id="S3" type="text" value="INEWS_PRD_TVG" class="form-control"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyS3();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG3" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG3();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N3" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN3();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN3">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT3" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN3();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN3();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Acompanhamento do Jornal NE1 -->
+            <!-- Modal Acompanhamento do Jornal GE -->
+            <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Acompanhamento do Jornal GE</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R4" class="form-control" value="Paulo Henrique Meira"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR4();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L4" class="form-control"
+                                                value="Prédio Conteúdo, Térreo, Controle 1" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL4();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T4" class="form-control"
+                                                value="PósLog>Sistemas Globo>Demais Sistemas>Dúvidas de Utilização>Acompanhamento Jornais"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT4();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT4">
+                                            <input type="text" id="D4" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H4" class="form-control" value="13:00">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Ocorrência</label>
+                                        <select id="O4" class="form-control">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div id="DO4" class="col-md-12 mb-3 text-left">
+                                        <label>Detalhes da Ocorrência</label>
+                                        <div class="input-group">
+                                            <input type="text" id="DOT4" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div id="DE4" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET4" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE4();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE4();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Sistema/Aplicação</label>
+                                        <div class="input-group">
+                                            <input id="S4" type="text" value="INEWS_PRD_TVG" class="form-control"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyS4();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG4" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG4();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N4" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN4();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN4">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT4" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN4();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN4();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Acompanhamento do Jornal GE -->
+            <!-- Modal Acompanhamento do Jornal NE2 -->
+            <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Acompanhamento do Jornal NE2</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R5" class="form-control" value="Paulo Henrique Meira"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR5();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L5" class="form-control"
+                                                value="Prédio Conteúdo, Térreo, Controle 1" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL5();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T5" class="form-control"
+                                                value="PósLog>Sistemas Globo>Demais Sistemas>Dúvidas de Utilização>Acompanhamento Jornais"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT5();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT5">
+                                            <input type="text" id="D5" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H5" class="form-control" value="19:00">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Ocorrência</label>
+                                        <select id="O5" class="form-control">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div id="DO5" class="col-md-12 mb-3 text-left">
+                                        <label>Detalhes da Ocorrência</label>
+                                        <div class="input-group">
+                                            <input type="text" id="DOT5" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div id="DE5" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET5" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE5();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE5();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Sistema/Aplicação</label>
+                                        <div class="input-group">
+                                            <input id="S5" type="text" value="INEWS_PRD_TVG" class="form-control"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyS5();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG5" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG5();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N5" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN5();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN5">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT5" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN5();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN5();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Acompanhamento do Jornal NE2 -->
+            <!-- Modal Backup do iNews -->
+            <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Backup do iNews</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R6" class="form-control" value="Inadilson Paz"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR6();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L6" class="form-control"
+                                                value="Prédio Conteúdo, 1º Andar, NOC" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL6();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T6" class="form-control"
+                                                value="PósLog>Sistemas Globo>iNEWS>Dúvidas de Utilização>Backup do iNews"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT6();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT6">
+                                            <input type="text" id="D6" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H6" class="form-control" value="21:00">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Ocorrência</label>
+                                        <select id="O6" class="form-control">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div id="DO6" class="col-md-12 mb-3 text-left">
+                                        <label>Detalhes da Ocorrência</label>
+                                        <div class="input-group">
+                                            <input type="text" id="DOT6" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div id="DE6" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET6" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE6();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE6();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Sistema/Aplicação</label>
+                                        <div class="input-group">
+                                            <input id="S6" type="text" value="INEWS_PRD_TVG" class="form-control"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyS6();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG6" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG6();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N6" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN6();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN6">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT6" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN6();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN6();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Backup do iNews -->
+            <!-- Modal Acompanhamento do Scout -->
+            <div class="modal fade" id="modal7" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Acompanhamento do Scout</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R7" class="form-control" value="Inadilson Paz"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR7();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L7" class="form-control"
+                                                value="Prédio Conteúdo, Térreo, Redação Jornalismo" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL7();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T7" class="form-control"
+                                                value="PósLog>Sistemas Globo>SCOUT>Dúvidas de Utilização>Acompanhamento"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT7();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT7">
+                                            <input type="text" id="D7" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H7" class="form-control" value="21:30">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Ocorrência</label>
+                                        <select id="O7" class="form-control">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div id="DO7" class="col-md-12 mb-3 text-left">
+                                        <label>Detalhes da Ocorrência</label>
+                                        <div class="input-group">
+                                            <input type="text" id="DOT7" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div id="DE7" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET7" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE7();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE7();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Sistema/Aplicação</label>
+                                        <div class="input-group">
+                                            <input id="S7" type="text" value="SCOUTWEB_PRD_TVG" class="form-control"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyS7();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG7" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG7();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N7" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN7();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN7">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT7" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN7();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN7();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Acompanhamento do Scout -->
+            <!-- Modal Ambientação -->
+            <div class="modal fade" id="modal8" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Ambientação</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card px-3 py-3">
+                                <form class="form-row">
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Solicitado Para</label>
+                                        <div class="input-group">
+                                            <input type="text" id="R8" class="form-control">
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyR8();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3 text-left">
+                                        <label>Detalhes do Local do Atendimento</label>
+                                        <div class="input-group">
+                                            <input type="text" id="L8" class="form-control">
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyL8();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Título</label>
+                                        <div class="input-group">
+                                            <input type="text" id="T8" class="form-control"
+                                                value="PósLog>Acessos, Senhas, e Perfis>Rede Corporativa>Ambientação"
+                                                readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyT8();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Data</label>
+                                        <div class="input-append date" id="DT8">
+                                            <input type="text" id="D8" size="10" class="form-control span2"
+                                                autocomplete="off">
+                                            <span class="add-on">
+                                                <i class="icon-th"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Hora</label>
+                                        <input type="time" id="H8" class="form-control" value="00:00">
+                                    </div>
+                                    <div class="col-md-4 mb-3 text-left">
+                                        <label>Departamento</label>
+                                        <select id="DP8" class="form-control">
+                                            <option value="Capital Humano">Capital Humano</option>
+                                            <option value="Comunicação">Comunicação</option>
+                                            <option value="Direção Regional">Direção Regional</option>
+                                            <option value="Esportes">Esportes</option>
+                                            <option value="Finanças e Infraestrutura">Finanças e Infraestrutura</option>
+                                            <option value="Jornalismo">Jornalismo</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="Negócios">Negócios</option>
+                                            <option value="Programação">Programação</option>
+                                            <option value="Tecnologia">Tecnologia</option>
+                                        </select>
+                                    </div>
+                                    <div id="DE8" class="col-md-12 mb-3 text-left">
+                                        <label>Descrição</label>
+                                        <div class="input-group">
+                                            <textarea id="DET8" rows="6" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateDE8();">Gerar Descrição</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyDE8();">Copiar
+                                            Descrição</button>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Grupo Designado</label>
+                                        <div class="input-group">
+                                            <input id="DG8" type="text" value="IT-DTPS-O&SI-EU_SL-STF-BRA-PE-REC"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyDG8();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left">
+                                        <label>Nota</label>
+                                        <div class="input-group">
+                                            <input id="N8" type="text"
+                                                value="Chamado Direcionado para Fila de Suporte Local - PósLog"
+                                                class="form-control" readonly>
+                                            <div class="input-group-btn ml-2">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="CopyN8();">Copiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3 text-left" id="CN8">
+                                        <label>Nota de Fechamento</label>
+                                        <div class="input-group">
+                                            <textarea id="CNT8" rows="5" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="GenerateCN8();">Gerar Nota de Fechamento</button>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                            onclick="CopyCN8();">Copiar
+                                            Nota de Fechamento</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Ambientação -->
+        </div>
+    </div>
+</div>
+{% endblock %}
